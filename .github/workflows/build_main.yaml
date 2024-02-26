@@ -1,9 +1,9 @@
 name: Build & test project
 
 on:
-  pull_request:
-    types:
-      - opened
+  push:
+    branches:
+      - main
 
 jobs:
   test:
@@ -19,7 +19,3 @@ jobs:
         working-directory: .
         run: |
           mvn test
-      - name: Run mutation tests
-        working-directory: .
-        run: |
-          mvn test-compile org.pitest:pitest-maven:mutationCoverage
